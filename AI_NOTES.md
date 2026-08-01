@@ -1,23 +1,30 @@
 # AI Notes
 
 
-This document explains how I used AI tools (primarily ChatGPT and Claude) while building this project, what they generated, what I validated or changed, and which suggestions I intentionally did not adopt.
+This document explains how I used AI tools (primarily ChatGPT and Claude) while building this project.
 ## 1. What was AI-generated vs. written by me
 
 **AI-generated (used as a starting point, then reviewed/modified):**
-- Initial `Expense` model structure (fields, constructor, getters/setters)
-- Initial `ExpenseController` REST endpoint skeleton (`POST`, `GET`, `GET /total`, `DELETE`)
+- Suggested some additional spring dependency 
+- Modifying ExpenseController REST endpoints.
 - `GlobalExceptionHandler` (`@RestControllerAdvice`) structure for validation and not-found errors
 - `ExpenseControllerTest` — the majority of the MockMvc test cases were AI-drafted, then fixed by me to compile and pass against my actual implementation
 - README.md structure and initial content
 
-**Written/implemented by me:**
-- `ExpenseServiceImpl` — I wrote this with my own interface/implementation split (`ExpenseService` interface + `ExpenseServiceImpl`), which differs from AI's initial single-class suggestion
-- Repository layer wiring and package structure
-- All bug fixes listed below — diagnosed and fixed by reading actual compiler/test output, not by re-prompting AI for a fix each time
+  **Written/implemented by me:**
+- `Project Intial Setup` - created spring boot project and added required dependencies(also took help from AI).
+- `Intial Project Structure` - planned and set up the Controller / Service / Repository layered architecture
+- Initial `Expense` model structure
+- Initial `ExpenseController` REST endpoint skeleton (`POST`, `GET`, `GET /total`, `DELETE`) — later modified by AI
+
 - `AI_NOTES.md` and final README verification
 
 ## 2. What I validated, tested, or changed — and why
+I reviewed every AI-generated suggestion before integrating it, rather than copying it directly. In general, this meant:
+- AI suggested using BigDecimal for monetary values, and I adopted it to avoid floating-point precision issues.
+- Testing all REST API endpoints using Postman to verify correct functionality and expected HTTP status codes.
+- Running unit tests after implementing AI-suggested test cases and fixing any that failed
+- Checking the final implementation against the assignment requirements before committing.
 
 **Spring Boot 4 / Jackson 3 package mismatch.**
 AI's initial test code used `com.fasterxml.jackson.databind.ObjectMapper` and manually registered `JavaTimeModule`. This project runs Spring Boot 4.1.0, which ships Jackson 3.x — the package was renamed to `tools.jackson.databind`, and `JavaTimeModule` registration is no longer needed since JSR-310 support is built in. I caught this from `Cannot resolve symbol` errors in IntelliJ, confirmed the actual dependency tree with `mvnw dependency:tree`, and verified the correct import path before fixing it. Same issue occurred again with `@WebMvcTest`'s import path, which also moved in Spring Boot 4.
