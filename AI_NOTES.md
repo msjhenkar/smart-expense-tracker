@@ -11,7 +11,7 @@ This document explains how I used AI tools (primarily ChatGPT and Claude) while 
 - `ExpenseControllerTest` — the majority of the MockMvc test cases were AI-drafted, then fixed by me to compile and pass against my actual implementation
 - README.md structure and initial content
 
-  **Written/implemented by me:**
+**Written/implemented by me:**
 - `Project Intial Setup` - created spring boot project and added required dependencies(also took help from AI).
 - `Intial Project Structure` - planned and set up the Controller / Service / Repository layered architecture
 - Initial `Expense` model structure
