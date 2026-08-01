@@ -1,8 +1,6 @@
-package com.expense_tracker.Service;
+package com.expense_tracker.service;
 
 import com.expense_tracker.model.Expense;
-import com.expense_tracker.repository.ExpenseRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

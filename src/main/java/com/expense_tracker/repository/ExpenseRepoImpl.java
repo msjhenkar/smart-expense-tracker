@@ -1,6 +1,7 @@
 package com.expense_tracker.repository;
 
 import com.expense_tracker.model.Expense;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.stream.Collectors;
 
+@Repository
 public class ExpenseRepoImpl implements ExpenseRepository{
 
     private final Map<Long, Expense> store = new ConcurrentHashMap<>();

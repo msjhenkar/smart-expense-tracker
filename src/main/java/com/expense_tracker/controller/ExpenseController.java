@@ -1,11 +1,12 @@
-package com.expense_tracker.Controller;
+package com.expense_tracker.controller;
 
-import com.expense_tracker.Service.ExpenseService;
+import com.expense_tracker.service.ExpenseService;
 import com.expense_tracker.dto.ExpenseRequest;
 import com.expense_tracker.model.Expense;
-import org.apache.coyote.Response;
+
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +15,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@RestController
+@RequestMapping("/api/expenses")
 public class ExpenseController {
+
     private final ExpenseService service;
 
     public ExpenseController (ExpenseService service){
@@ -22,7 +26,7 @@ public class ExpenseController {
     }
 
     @PostMapping
-    public ResponseEntity<Expense> addExpense(@RequestBody ExpenseRequest request){
+    public ResponseEntity<Expense> addExpense(@Valid @RequestBody ExpenseRequest request){
         Expense expense = new Expense(
                 null,
                 request.getTitle(),

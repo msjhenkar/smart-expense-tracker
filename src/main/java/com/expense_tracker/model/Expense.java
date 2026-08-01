@@ -18,7 +18,7 @@ public class Expense {
     private Long id;
 
     @NotBlank(message = "Title is required")
-    private String name;
+    private String title;
 
     @NotBlank(message = "Amount is required")
     @Positive( message = "Amount must be greater than 0")
@@ -27,5 +27,5 @@ public class Expense {
     @NotBlank(message="Category is required")
     private String category;
 
-    private LocalDate localDate;
+    private LocalDate date;
 }
