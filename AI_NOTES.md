@@ -1,5 +1,18 @@
 # AI Notes
 
+Done by me
+- Planned and initial set up of spring boot project.
+- drafted folder structure, 
+- outlined the end point list, 
+- Didnt fully used the ,odel, service and controller architecture but instead i implemented Repository layer and following interface in service. 
+- Made some changes in Service Layer (separate `ExpenseService` Interface + `ExpenseServiceImpl`)
+- made some structural changes different from AI adding constructure based injection, for-llops instead of strems
+-
+
+Given By AI
+- suggested additinonal dependencies
+- drafted code for model, service and controller
+- Wrote the `ExpenseCOntrollerTest` File 
 
 This document explains how I used AI tools (primarily ChatGPT and Claude) while building this project.
 ## 1. What was AI-generated vs. written by me
